@@ -67,6 +67,8 @@ public class TetrominoHandler : MonoBehaviour
 
                     if (!IsInvalidPosition())
                         ActionLimitRotation(-1);
+                    else
+                        gameplayManager.UpdateGrid(this);
                 }
                 break;
         }
@@ -95,6 +97,8 @@ public class TetrominoHandler : MonoBehaviour
 
             gameplayManager.GenerateTetromino();
         }
+        else
+            gameplayManager.UpdateGrid(this);
     }
     private void MoveHorizontal(Vector3 direction)
     {
@@ -102,6 +106,8 @@ public class TetrominoHandler : MonoBehaviour
 
         if (!IsInvalidPosition())
             transform.position += direction * -1;
+        else
+            gameplayManager.UpdateGrid(this);
     }
     private bool IsInvalidPosition()
     {
@@ -111,6 +117,12 @@ public class TetrominoHandler : MonoBehaviour
 
             if (!gameplayManager.IsTetrominoIndisideGrid(pos))
                 return false;
+
+            if (gameplayManager.GetTransformAtGridPosition(pos) != null &&
+                gameplayManager.GetTransformAtGridPosition(pos).parent != transform)
+            {
+                return false;
+            }
         }
         return true;
     }

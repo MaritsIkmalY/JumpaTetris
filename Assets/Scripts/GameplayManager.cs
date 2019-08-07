@@ -7,6 +7,8 @@ public class GameplayManager : MonoBehaviour
     public static int gridwidth = 10;
     public static int gridheight = 20;
 
+    public static Transform[,] grid = new Transform[gridwidth, gridheight];
+
     private void Start()
     {
         GenerateTetromino();
@@ -43,6 +45,37 @@ public class GameplayManager : MonoBehaviour
         }
 
         return "Prefabs/" + tetrominoName;
+    }
+
+    public Transform GetTransformAtGridPosition(Vector3 pos)
+    {
+        if (pos.y > gridwidth - 1)
+            return null;
+        else
+            return grid[(int)pos.x, (int)pos.y];
+    }
+
+    public void UpdateGrid(TetrominoHandler tetromino)
+    {
+        for (int y = 0; y< gridwidth; y++)
+        {
+            for(int x=0;x<gridwidth; x++)
+            {
+                if(grid[x,y]!=null)
+                {
+                    if (grid[x, y].parent == tetromino.transform)
+                        grid[x, y] = null;
+                }
+            }
+        }
+
+        foreach (Transform mino in tetromino.transform)
+        {
+            Vector3 pos = Round(mino.position);
+
+            if (pos.y < gridwidth)
+                grid[(int)pos.x, (int)pos.y] = mino;
+        }
     }
 
     public void GenerateTetromino()
