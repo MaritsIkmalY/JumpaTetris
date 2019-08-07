@@ -48,6 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fallSpeed: 1
+  allowRotation: 0
+  limitRotation: 0
 --- !u!1001 &450004760232600903
 PrefabInstance:
   m_ObjectHideFlags: 0
