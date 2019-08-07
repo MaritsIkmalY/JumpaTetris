@@ -7,6 +7,51 @@ public class GameplayManager : MonoBehaviour
     public static int gridwidth = 10;
     public static int gridheight = 20;
 
+    private void Start()
+    {
+        GenerateTetromino();
+    }
+
+    private string GetRdandomTetromino()
+    {
+        int val = Random.Range(0, 7);
+        string tetrominoName = "TetrominoT";
+
+        switch (val)
+        {
+            case 0:
+                tetrominoName = "TetrominoI";
+                break;
+            case 1:
+                tetrominoName = "TetrominoJ";
+                break;
+            case 2:
+                tetrominoName = "TetrominoL";
+                break;
+            case 3:
+                tetrominoName = "TetrominoT";
+                break;
+            case 4:
+                tetrominoName = "TetrominoO";
+                break;
+            case 5:
+                tetrominoName = "TetrominoS";
+                break;
+            case 6:
+                tetrominoName = "TetrominoZ";
+                break;
+        }
+
+        return "Prefabs/" + tetrominoName;
+    }
+
+    public void GenerateTetromino()
+    {
+        GameObject tetromino = (GameObject)Instantiate(Resources.Load(GetRdandomTetromino(), typeof(GameObject)),
+                                                       new Vector3(5.0f, 18.0f, 0.0f),
+                                                       Quaternion.identity);
+    }
+
     public bool IsTetrominoIndisideGrid(Vector3 pos)
     {
         return (

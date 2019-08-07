@@ -1,0 +1,29 @@
+[33mcommit ddf3862a31b38da834184d7274318343ff6a6cb8[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: alanhidayat33 <alanarbanihidayat92@gmail.com>
+Date:   Wed Aug 7 18:45:21 2019 +0700
+
+    membuat limitasi dan aturan rotasi tetromino
+
+[33mcommit 0fea24648455f9cdbbfd83e410fde20077a12975[m
+Author: alanhidayat33 <alanarbanihidayat92@gmail.com>
+Date:   Wed Aug 7 18:32:35 2019 +0700
+
+    membuat batas gerak tetromino
+
+[33mcommit 6cc3c4a9b3d76a24b07c9949a9f8b689f2f02127[m
+Author: alanhidayat33 <alanarbanihidayat92@gmail.com>
+Date:   Tue Aug 6 18:32:02 2019 +0700
+
+    menggerakkan tetromino kebawah
+
+[33mcommit 9f4ff480d58a55ee4661acfc0766905a6fb96d07[m
+Author: alanhidayat33 <alanarbanihidayat92@gmail.com>
+Date:   Tue Aug 6 18:21:21 2019 +0700
+
+    inisialisasi proyek dan menambahkan input pada tetromino
+
+[33mcommit 9d998b639d37debea2a1176f64fb4842c8c4b9e3[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: alanhidayat <42029857+alanhidayat33@users.noreply.github.com>
+Date:   Tue Aug 6 16:50:14 2019 +0700
+
+    Initial commit
