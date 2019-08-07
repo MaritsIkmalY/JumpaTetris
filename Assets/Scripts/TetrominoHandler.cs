@@ -93,6 +93,8 @@ public class TetrominoHandler : MonoBehaviour
         {
             transform.position += Vector3.up;
 
+            gameplayManager.DestroyRow();
+
             enabled = false;
 
             gameplayManager.GenerateTetromino();
