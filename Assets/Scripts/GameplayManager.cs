@@ -100,9 +100,35 @@ public class GameplayManager : MonoBehaviour
             }
         }
     }
+
+    public bool IsReactLimitGrid(TetrominoHandler tetromino)
+    {
+        for (int x = 0; x < gridWidth; x++)
+        {
+            foreach (Transform mino in tetromino.transform)
+            {
+                Vector3 pos = Round(mino.position);
+
+                if(pos.y >= gridHeight -1 &&
+                    !tetromino.isActiveAndEnabled)
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    public void GameOver(TetrominoHandler tetromino)
+    {
+        Debug.Log("Game is Over!");
+
+        enabled = false;
+    }
     public Transform GetTransformAtGridPosition(Vector3 pos)
     {
-        if (pos.y > gridWidth - 1)
+        if (pos.y > gridHeight - 1)
             return null;
         else
             return grid[(int)pos.x, (int)pos.y];
@@ -110,11 +136,11 @@ public class GameplayManager : MonoBehaviour
 
     public void UpdateGrid(TetrominoHandler tetromino)
     {
-        for (int y = 0; y< gridWidth; y++)
+        for (int y = 0; y< gridHeight; y++)
         {
             for(int x=0;x<gridWidth; x++)
             {
-                if(grid[x,y]!=null)
+                if(grid[x,y] != null)
                 {
                     if (grid[x, y].parent == tetromino.transform)
                         grid[x, y] = null;
@@ -126,7 +152,7 @@ public class GameplayManager : MonoBehaviour
         {
             Vector3 pos = Round(mino.position);
 
-            if (pos.y < gridWidth)
+            if (pos.y < gridHeight)
                 grid[(int)pos.x, (int)pos.y] = mino;
         }
     }
@@ -134,7 +160,7 @@ public class GameplayManager : MonoBehaviour
     public void GenerateTetromino()
     {
         GameObject tetromino = (GameObject)Instantiate(Resources.Load(GetRdandomTetromino(), typeof(GameObject)),
-                                                       new Vector3(5.0f, 20.0f, 0.0f),
+                                                       new Vector3(5.0f, 18.0f, 0.0f),
                                                        Quaternion.identity);
     }
 
